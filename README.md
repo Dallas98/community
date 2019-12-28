@@ -13,8 +13,9 @@ git push -u origin master
 git branch branchname 新建分支   
   
 
-
-
 ##资料   
 [BootStrap](https://v3.bootcss.com/components/)  
 [Github OAuth](https://developer.github.com/)  
+
+##笔记   
+https://api.github.com/user?access_token=

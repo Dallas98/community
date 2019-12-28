@@ -16,7 +16,7 @@
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
                     data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Dallas Community</span>
+                <span class="sr-only">我的社区</span>
             </button>
             <a class="navbar-brand" href="#">个人社区</a>
         </div>
@@ -29,16 +29,24 @@
                 <button type="submit" class="btn btn-default">Search</button>
             </form>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="https://github.com/login/oauth/authorize?client_id=8a6ae07b91cdc66a73a4&redirect_uri=http://localhost:8887/callback&scope=user&state=1">登录</a></li>
-                <li class="dropdown">
+                <li class="dropdown" th:if="${session.user!=null}">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false">我 <span class="caret"></span></a>
+                       aria-expanded="false" th:text="${session.user.getName()}"><span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="#">消息中心</a></li>
                         <li><a href="#">个人信息</a></li>
                         <li><a href="#">退出登录</a></li>
                     </ul>
                 </li>
+                <li th:if="${session.user!=null}">
+                    <a href="#">
+                        <img th:src="${session.user.getAvatar_url()}" height=30px width=30px/>
+                    </a>
+                </li>
+                <li th:if="${session.user==null}">
+                    <a href="https://github.com/login/oauth/authorize?client_id=8a6ae07b91cdc66a73a4&redirect_uri=http://localhost:8887/callback&scope=user&state=1">请登录</a>
+                </li>
+
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
