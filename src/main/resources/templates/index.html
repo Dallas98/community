@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Dallas community</title>
+    <title>我的社区</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="css/bootstrap.min.css"/>
     <link rel="stylesheet" href="css/bootstrap-theme.min.css"/>
@@ -40,7 +40,7 @@
                 </li>
                 <li th:if="${session.user!=null}">
                     <a href="#">
-                        <img th:src="${session.user.getAvatar_url()}" height=30px width=30px/>
+                        <img class="img-circle" th:src="${session.user.getAvatar_url()}" height="22px" width="22px"/>
                     </a>
                 </li>
                 <li th:if="${session.user==null}">
