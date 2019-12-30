@@ -38,11 +38,11 @@
                         <li><a href="#">退出登录</a></li>
                     </ul>
                 </li>
-                <li th:if="${session.user!=null}">
-                    <a href="#">
-                        <img class="img-circle" th:src="${session.user.getAvatar_url()}" height="22px" width="22px"/>
-                    </a>
-                </li>
+                <!--<li th:if="${session.user!=null}">-->
+                    <!--<a href="#">-->
+                        <!--<img class="img-circle" th:src="${session.user.getAvatar_url()}" height="22px" width="22px"/>-->
+                    <!--</a>-->
+                <!--</li>-->
                 <li th:if="${session.user==null}">
                     <a href="https://github.com/login/oauth/authorize?client_id=8a6ae07b91cdc66a73a4&redirect_uri=http://localhost:8887/callback&scope=user&state=1">请登录</a>
                 </li>
