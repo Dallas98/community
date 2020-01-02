@@ -57,29 +57,39 @@
             <form action="/publish" method="post">
                 <div class="form-group">
                     <label for="title">问题标题:</label>
-                    <input type="text" class="form-control" th:value="${title}" id="title" placeholder="问题标题...">
+                    <input type="text" class="form-control"
+                           th:value="${title}" id="title" name="title" placeholder="问题标题...">
                 </div>
 
                 <div class="form-group">
-                    <label for="description">问题补充:（必填）</label>
-                    <textarea name="description" id="description" th:value="${description}" placeholder="请输入你的问题" class="form-control" cols="30"
-                              rows="10"></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="tag">添加标签：</label>
-                    <input type="text" class="form-control" id="tag" placeholder="输入标签，以逗号分割" th:value="${tag}">
+                    <label for="description">问题补充 (必填):</label>
+                    <textarea name="description" id="description" th:value="${description}" class="form-control"
+                              cols="30" rows="10" placeholder="请输入问题" type="text"></textarea>
                 </div>
 
-                <div class="container-fluid main">
+                <div class="form-group">
+                    <label for="tag">添加标签:</label>
+                    <input type="text" class="form-control" th:value="${tag}" id="tag" name="tag"
+                           placeholder="输入标签，以，号分隔">
+                </div>
+
+
+                <div class="container-fluid main ">
                     <div class="row">
-                        <span class="alert alert-danger col-lg-9 col-md-12 col-sm-12 col-xs-12" th:text="${error}" th:if="${error!=null}"></span>
-                        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
-                            <button type="submit" class="btn btn-success btn-publish">发布</button>
+                        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+                            <div class="alert alert-danger col-lg-12 col-md-12 col-sm-12 col-xs-12"
+                                 th:text="${error}"
+                                 th:if="${error != null}">
+                            </div>
                         </div>
-
+                        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                            <button type="submit"
+                                    class="btn btn-success btn-publish ">
+                                发布
+                            </button>
+                        </div>
                     </div>
                 </div>
-
             </form>
 
         </div>

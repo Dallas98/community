@@ -49,12 +49,15 @@ public class PublishController {
 
         if(title==null||title==""){
             model.addAttribute("error","标题不能为空");
+            return "publish";
         }
         if(description==null||description==""){
             model.addAttribute("error","问题不能为空");
+            return "publish";
         }
         if(tag==null||tag==""){
             model.addAttribute("error","标签不能为空");
+            return "publish";
         }
 
         User user = null;
@@ -77,7 +80,7 @@ public class PublishController {
         }
         Question question = new Question();
         question.setTitle(title);
-        question.setTitle(description);
+        question.setDescription(description);
         question.setTag(tag);
         question.setCreator(user.getId());
         question.setGmt_create(System.currentTimeMillis());
