@@ -13,6 +13,7 @@ public class User {
     private String token;
     private Long gmt_create;
     private Long gmt_modified;
+    private String avatar_url;
 
     public Integer getId() {
         return id;
@@ -60,5 +61,13 @@ public class User {
 
     public void setGmt_modified(Long gmt_modified) {
         this.gmt_modified = gmt_modified;
+    }
+
+    public String getAvater_url() {
+        return avatar_url;
+    }
+
+    public void setAvater_url(String avatar_url) {
+        this.avatar_url = avatar_url;
     }
 }
