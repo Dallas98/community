@@ -1,11 +1,11 @@
 package com.dallas.community.service;
 
+import com.dallas.community.dto.PaginationDTO;
 import com.dallas.community.dto.QuestionDTO;
 import com.dallas.community.mapper.QuestionMapper;
 import com.dallas.community.mapper.UserMapper;
 import com.dallas.community.model.Question;
 import com.dallas.community.model.User;
-import lombok.Data;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,11 +26,23 @@ public class QuestionService
     @Autowired
     private QuestionMapper questionMapper;
 
-    @Autowired UserMapper userMapper;
+    @Autowired
+    private UserMapper userMapper;
 
-    public List<QuestionDTO> list() {
-        List<Question> questions =questionMapper.list();
+    public PaginationDTO list(Integer page, Integer size) {
+        PaginationDTO paginationDTO = new PaginationDTO();
+        Integer totalCount = questionMapper.count();
+        paginationDTO.setPagination(totalCount, page, size);
+        if (page < 1) {
+            page = 1;
+        }
+        if (page > paginationDTO.getTotalPage()) {
+            page = paginationDTO.getTotalPage();
+        }
+        Integer offset = size * (page - 1);
+        List<Question> questions = questionMapper.list(offset, size);
         List<QuestionDTO> questionDTOList =new ArrayList<>();
+
         for (Question question:questions){
             User user=userMapper.findById(question.getCreator());
             QuestionDTO questionDTO=new QuestionDTO();
@@ -38,6 +50,7 @@ public class QuestionService
             questionDTO.setUser(user);
             questionDTOList.add(questionDTO);
         }
-        return questionDTOList;
+        paginationDTO.setQuestions(questionDTOList);
+        return paginationDTO;
     }
 }
