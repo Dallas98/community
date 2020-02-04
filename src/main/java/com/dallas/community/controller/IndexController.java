@@ -1,10 +1,7 @@
 package com.dallas.community.controller;
 
 import com.dallas.community.dto.PaginationDTO;
-import com.dallas.community.dto.QuestionDTO;
-import com.dallas.community.mapper.QuestionMapper;
 import com.dallas.community.mapper.UserMapper;
-import com.dallas.community.model.Question;
 import com.dallas.community.model.User;
 import com.dallas.community.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import java.util.List;
 
 /**
  * @program: community
